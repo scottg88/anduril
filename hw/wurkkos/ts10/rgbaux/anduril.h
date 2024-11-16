@@ -83,3 +83,66 @@
 // enable factory reset on 13H without loosening tailcap (required)
 #define USE_SOFT_FACTORY_RESET
 
+// Custom defaults
+
+#ifdef BLINK_AT_RAMP_CEIL
+#undef BLINK_AT_RAMP_CEIL
+#endif
+#ifdef BLINK_AT_RAMP_FLOOR
+#undef BLINK_AT_RAMP_FLOOR
+#endif
+
+// Custom floors and ceilings
+#undef RAMP_SMOOTH_FLOOR
+#define RAMP_SMOOTH_FLOOR    20
+#undef RAMP_DISCRETE_FLOOR
+#define RAMP_DISCRETE_FLOOR  20
+#undef RAMP_DISCRETE_CEIL
+#define RAMP_DISCRETE_CEIL   110
+
+// override default ramp style
+#undef RAMP_STYLE
+#define RAMP_STYLE 1  // 0 = smooth, 1 = stepped
+
+#undef SIMPLE_UI_ACTIVE
+#define SIMPLE_UI_ACTIVE 0
+
+// Turbo style (I think this is already the default but anyway)
+// 0 = no turbo
+// 1 = A1 style: Off 2C = ceil, On 2C = turbo
+// 2 = A2 style: Off 2C = ceil, On 2C = ceil, Ramped ceil 2C = turbo
+// All styles allow momentary turbo in advanced UI
+#undef DEFAULT_2C_STYLE
+#define DEFAULT_2C_STYLE 1  // default to Anduril 1 style
+
+// Disable some strobe modes
+#undef USE_BIKE_FLASHER_MODE
+#undef USE_PARTY_STROBE_MODE
+#undef USE_TACTICAL_STROBE_MODE
+#undef USE_LIGHTNING_MODE
+#undef USE_POLICE_COLOR_STROBE_MODE
+// Keep candle mode but here for reference
+//#undef USE_CANDLE_MODE
+
+#undef USE_SOS_MODE
+#undef USE_SOS_MODE_IN_BLINKY_GROUP
+
+// Setup default autolock to 1 min
+#undef DEFAULT_AUTOLOCK_TIME
+#define DEFAULT_AUTOLOCK_TIME 1 // autolock time in minutes, 0 = disabled
+
+// Disable momentary mode as it is annoying
+#undef USE_MOMENTARY_MODE
+
+// Configure tactical mode as some good defaults WITHOUT THE STROBE MODE!
+#undef TACTICAL_LEVELS
+#define TACTICAL_LEVELS 30,60,100
+
+#ifdef RGB_LED_OFF_DEFAULT
+#undef RGB_LED_OFF_DEFAULT
+#endif
+#define RGB_LED_OFF_DEFAULT 0x29  // high, voltage
+#ifdef RGB_LED_LOCKOUT_DEFAULT
+#undef RGB_LED_LOCKOUT_DEFAULT
+#endif
+#define RGB_LED_LOCKOUT_DEFAULT 0x00  // off
